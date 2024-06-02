@@ -1,0 +1,36 @@
+1.Network Load Balancer :
+
+1.Open AWS in web.
+2.Go to EC2 and create 2 instances. (In summary give 2 )
+3.Generate a key pair.
+4.In Advanced Details , in the text box give the code :
+	#!/bin/bash
+
+yum update -y
+
+yum install httpd -y
+
+echo "<h1>This is from $(hostname -f)</h1>" > /var/www/html/index.html
+ 
+systemctl enable httpd
+
+systemctl start httpd
+n 
+5.Lauch Instance.
+6.Check if the instances are created and change the name of one server to differentiate.
+7.Check whether any one the server are working.
+8.In the sidebar , select Load balancer
+8.Select Create Load Balancer.
+9.Create Application Load Balancer.
+10.Give a name for it.
+11.In Network Mapping , check every box below.
+12.In Security Group , disable default Security Group.
+13.Select new Security group  and give a name for it and random description and add inbound rules (Type - HTTP and Source - Anywhere)
+and finish it.
+14.Refresh the security group and select the created security group.
+15.In Listeners and routing , create a new target group.
+16.Give a name for it , and click next and select both servers and "include as pending below." (After this both the server should be visible in summary )
+17.Create target group.
+18.Select the new target group.
+19.Click Create Load Balancer.
+20.Copy the DNS name and open it in new tab.
